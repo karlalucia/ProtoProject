@@ -2,6 +2,8 @@ CREATE DATABASE databaseProt
 USE databaseProt;
 
 --actualizacion a la 1:44PM
+---no se si sirve
+
 
 CREATE TABLE user_type (
   id     INT PRIMARY KEY AUTO_INCREMENT,
