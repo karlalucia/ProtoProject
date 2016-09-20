@@ -1,6 +1,7 @@
 CREATE DATABASE databaseProt
 USE databaseProt;
 
+
 CREATE TABLE user_type (
   id     INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(30) NOT NULL
@@ -53,14 +54,14 @@ CREATE TABLE process (
 );
 
 CREATE TABLE client (
-  id        INT PRIMARY KEY AUTO_INCREMENT, 
-  nombres   VARCHAR(100) NOT NULL, 
-  apellidos VARCHAR(100) NOT NULL, 
-  dui       VARCHAR(10)  NOT NULL, 
-  nit       VARCHAR(17), 
-  telefono  VARCHAR(50), 
-  correo    VARCHAR(300), 
-  direccion VARCHAR(500) 
+  id        INT PRIMARY KEY AUTO_INCREMENT,
+  nombres   VARCHAR(100) NOT NULL,
+  apellidos VARCHAR(100) NOT NULL,
+  dui       VARCHAR(10)  NOT NULL,
+  nit       VARCHAR(17),
+  telefono  VARCHAR(50),
+  correo    VARCHAR(300),
+  direccion VARCHAR(500)
 );
 
 CREATE TABLE company (
@@ -70,33 +71,32 @@ CREATE TABLE company (
 );
 
 CREATE TABLE clients_type (
-  id     INT PRIMARY KEY AUTO_INCREMENT, 
-  nombre VARCHAR(50) 
-); 
+  id     INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50)
+);
 
-CREATE TABLE clients ( 
-  id          INT PRIMARY KEY AUTO_INCREMENT, 
-  client_id   INT NOT NULL, 
-  company_id  INT NOT NULL, 
-  type_id     INT NOT NULL, 
-  FOREIGN KEY (client_id) REFERENCES clients (id), 
-  FOREIGN KEY (company_id) REFERENCES company (id), 
-  FOREIGN KEY (type_id) REFERENCES clients_type (id) 
-); 
+CREATE TABLE clients (
+  id          INT PRIMARY KEY AUTO_INCREMENT,
+  client_id   INT NOT NULL,
+  company_id  INT NOT NULL,
+  type_id     INT NOT NULL,
+  FOREIGN KEY (client_id) REFERENCES clients (id),
+  FOREIGN KEY (company_id) REFERENCES company (id),
+  FOREIGN KEY (type_id) REFERENCES clients_type (id)
+);
 
-CREATE TABLE transaction_type (-- compra, venta 
-  id     INT PRIMARY KEY AUTO_INCREMENT, 
-  nombre VARCHAR(10) NOT NULL 
-); 
+CREATE TABLE transaction_type (-- compra, venta
+  id     INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(10) NOT NULL
+);
 
 
-CREATE TABLE transactions ( 
-  id         INT PRIMARY KEY AUTO_INCREMENT, 
-  type_id    INT NOT NULL, 
-  clients_id INT NOT NULL, 
-  users_id   INT NOT NULL, 
-  FOREIGN KEY (type_id) REFERENCES transaction_type (id) , 
-  FOREIGN KEY (clients_id) REFERENCES clients (id) , 
-  FOREIGN KEY (users_id) REFERENCES users (id) 
-); 
-
+CREATE TABLE transactions (
+  id         INT PRIMARY KEY AUTO_INCREMENT,
+  type_id    INT NOT NULL,
+  clients_id INT NOT NULL,
+  users_id   INT NOT NULL,
+  FOREIGN KEY (type_id) REFERENCES transaction_type (id) ,
+  FOREIGN KEY (clients_id) REFERENCES clients (id) ,
+  FOREIGN KEY (users_id) REFERENCES users (id)
+);
