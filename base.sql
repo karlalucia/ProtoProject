@@ -154,6 +154,8 @@ CREATE TABLE IF NOT EXISTS transactions (
 /*Aca termian lo de las treansacciones */
 
 
+
+
 /*Aca empieza lo de las facturas cerotas */
 CREATE TABLE IF NOT EXISTS type_bills (
   id     INT PRIMARY KEY AUTO_INCREMENT,
