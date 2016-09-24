@@ -115,6 +115,8 @@ CREATE TABLE IF NOT EXISTS person (
 );
 /*Aca termina lo de los empresas y personas */
 
+
+
 /*Aca empieza lo de los clientes */
 CREATE TABLE IF NOT EXISTS clients_type (
   id     INT PRIMARY KEY AUTO_INCREMENT,
