@@ -56,15 +56,30 @@ CREATE TABLE process (
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
+CREATE TABLE departamentos (
+  id     INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE municipios (
+  id              INT PRIMARY KEY AUTO_INCREMENT,
+  departamento_id INT         NOT NULL,
+  nombre          VARCHAR(50) NOT NULL,
+  FOREIGN KEY (departamento_id) REFERENCES departamentos
+);
+
 CREATE TABLE client (
   id        INT PRIMARY KEY AUTO_INCREMENT,
   nombres   VARCHAR(100) NOT NULL,
   apellidos VARCHAR(100) NOT NULL,
   dui       VARCHAR(10)  NOT NULL,
+  municipio_id INT NOT NULL,
   nit       VARCHAR(17),
   telefono  VARCHAR(50),
-  correo    VARCHAR(300),
-  direccion VARCHAR(500)
+  correo    VARCHAR(100),
+  direccion VARCHAR(500),
+  giro      VARCHAR(100),
+  FOREIGN KEY (municipio_id) REFERENCES municipios (id)
 );
 
 CREATE TABLE company (
