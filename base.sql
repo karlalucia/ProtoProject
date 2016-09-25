@@ -155,27 +155,3 @@ CREATE TABLE IF NOT EXISTS transactions (
 
 
 
-
-/*Aca empieza lo de las facturas cerotas */
-CREATE TABLE IF NOT EXISTS type_bills (
-  id     INT PRIMARY KEY AUTO_INCREMENT,
-  nombre VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE bills (
-  transaccion_id           INT PRIMARY KEY,
-  tipo_id                  INT NOT NULL,
-  codigo                   INT ,
-  ventas_gravadas          NUMERIC(15, 2), -- cf
-  ventas_excentas          NUMERIC(15, 2),
-  subtotal                 NUMERIC(15, 2), -- normal, cf
-  iva_retenido             NUMERIC(15, 2), -- cf
-  total                    NUMERIC(15, 2), -- normal, cf
-  fecha                    DATE,
-  numero_remision_anterior INT,
-  fecha_remision_anterior  DATE,
-  pdf                      VARCHAR(10000),
-  FOREIGN KEY (transaccion_id) REFERENCES transactions (id),
-  FOREIGN KEY (tipo_id) REFERENCES type_bills (id)
-);
-/*Aca termian lo de las facturas */
